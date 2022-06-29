@@ -1,5 +1,5 @@
 import {observer} from "mobx-react-lite"
-import {useStore} from '../../store'
+import {UseStore} from '../../store'
 import {Button, Checkbox, Form, Input, Toast, NavBar} from 'antd-mobile';
 import type {ToastHandler} from 'antd-mobile/es/components/toast'
 import React, {FC, useEffect, useRef, useState} from 'react'
@@ -8,7 +8,7 @@ import Router from "next/router";
 const Index = () => {
     const handler = useRef<ToastHandler>()
 
-    const {user} = useStore()
+    const {user} = UseStore()
 
     function click() {
         user.name = "bbbbbbb"
@@ -25,7 +25,7 @@ const Index = () => {
                 content: '登录成功',
             })
             await Router.push("/")
-        } catch (e) {
+        } catch (e:any) {
             // @ts-ignore
             Toast.show({
                 icon: 'fail',

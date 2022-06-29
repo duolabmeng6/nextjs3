@@ -1,43 +1,43 @@
 import {observer} from "mobx-react-lite"
-import {useStore} from '../../../store'
+import {UseStore} from '../../../store'
 import {Button, Checkbox, Form, Input, NavBar, Toast} from 'antd-mobile';
 import Router, {useRouter} from 'next/router'
 import type {ToastHandler} from 'antd-mobile/es/components/toast'
 import React, {FC, useEffect, useRef, useState} from 'react'
 import {List, Switch, Image, ImageUploader,Dialog} from 'antd-mobile'
 
+const dfad = [
+    {
+        id : 1,
+        姓名: "姓名",
+        手机号: "手机号",
+        地区: "地址",
+        详细地址: "详细地址",
+        设置默认地址: true,
+    },
+    {
+        id : 2,
+        姓名: "姓名",
+        手机号: "手机号",
+        地区: "地址",
+        详细地址: "详细地址",
+        设置默认地址: false,
+    }
+];
 
-const index = () => {
+const Index = () => {
     //获取input表单文件上传对象
-    const inputRef = useRef(null)
-    const {user} = useStore()
-    const [address, setAddress] = useState([
-        {
-            id : 1,
-            姓名: "姓名",
-            手机号: "手机号",
-            地区: "地址",
-            详细地址: "详细地址",
-            设置默认地址: true,
-        },
-        {
-            id : 2,
-            姓名: "姓名",
-            手机号: "手机号",
-            地区: "地址",
-            详细地址: "详细地址",
-            设置默认地址: false,
-        }
-    ])
+    const {User} = UseStore()
+    const [Address, setAddress] = useState(dfad)
     // @ts-ignore
     useEffect(() => {
-        user.redata()
+        User.redata()
 
         async function fetchData() {
-            let data = await user.getAddress()
+            let data = await User.getAddress()
             setAddress(data.items)
         }
-        fetchData();
+        fetchData().then(r => {});
 
 
     }, [])
@@ -53,7 +53,7 @@ const index = () => {
                 收货地址
             </NavBar>
             <List mode="card">
-                {address.map(shdz => (
+                {Address.map(shdz => (
                     <List.Item
                         key={shdz.id}
                         prefix={
@@ -89,7 +89,7 @@ const index = () => {
                                                 bold: true,
                                                 danger: true,
                                                 onClick: async () => {
-                                                    let data = await user.deleteAddress(shdz.id)
+                                                    let data = await User.deleteAddress(shdz.id)
                                                     console.log("删除",data)
 
                                                     Toast.show({
@@ -129,4 +129,4 @@ const index = () => {
     )
 }
 
-export default observer(index)
+export default observer(Index)

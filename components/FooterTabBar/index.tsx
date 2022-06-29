@@ -2,11 +2,11 @@ import {TabBar} from "antd-mobile";
 import React, {useEffect, useState} from "react";
 import {AppOutline, MessageOutline, UnorderedListOutline, UserOutline} from "antd-mobile-icons";
 import Router from "next/router";
-import {useStore} from "../../store";
+import {UseStore} from "../../store";
 
 
 const FooterTabBar = () => {
-    const {tabs} = useStore()
+    const {tabs} = UseStore()
 
     const tabsItem = [
         {

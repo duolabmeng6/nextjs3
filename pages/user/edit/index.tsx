@@ -1,20 +1,21 @@
 import {observer} from "mobx-react-lite"
-import {useStore} from '../../../store'
+import {UseStore} from '../../../store'
 import {Button, Checkbox, Form, Input, NavBar, Toast} from 'antd-mobile';
 import Router, { useRouter } from 'next/router'
 import type { ToastHandler } from 'antd-mobile/es/components/toast'
 import React, { FC, useEffect, useRef, useState } from 'react'
 
-const index = () => {
+const Index = () => {
     const handler = useRef<ToastHandler>()
 
     const router = useRouter()
-    const {user} = useStore()
+    const {user} = UseStore()
     const form = useRef(null)
 
     useEffect(function (){
         user.redata()
         console.log("用户信息",user.info)
+        // @ts-ignore
         form.current.setFieldsValue(user.info);
     },[])
 
@@ -25,10 +26,12 @@ const index = () => {
         try {
             let data = await user.edit(values)
             // await router.push("/user/edit")
+            // @ts-ignore
             if (data.message =="操作成功"){
 
                 Toast.show({icon: 'success', content: '保存成功'})
             }else{
+                // @ts-ignore
                 Toast.show({icon: 'success', content: data.message})
             }
         } catch (e) {
@@ -91,4 +94,4 @@ const index = () => {
     )
 }
 
-export default observer(index)
+export default observer(Index)

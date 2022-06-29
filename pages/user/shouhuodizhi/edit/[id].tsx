@@ -1,11 +1,12 @@
 import {Button, Checkbox, Form, Input, NavBar, Toast, Cascader, Space} from 'antd-mobile';
 import Router, {useRouter} from 'next/router'
 import React, {FC, useEffect, useRef, useState, useImperativeHandle} from 'react'
-import options from './cities'
-import {useStore} from "../../../../store";
+// @ts-ignore
+import options from '../../../../utils/cities'
+import {UseStore} from "../../../../store";
 
-const index = () => {
-    const {user} = useStore()
+const Index = () => {
+    const {user} = UseStore()
     const router = useRouter()
     const {id} = router.query
     const [address, setAddress] = useState<string[]>([])
@@ -27,9 +28,11 @@ const index = () => {
                 console.log(data.地区.split("-"))
 
 
+                // @ts-ignore
                 form.current.setFieldsValue(data)
                 setshdzs(data)
                 // setAddress(data.地区.split("-"))
+                // @ts-ignore
                 addressChildRef.current.changeVal(data.地区.split("-"))
             })
         }
@@ -98,7 +101,7 @@ const index = () => {
 }
 
 // 渲染所选值
-function CascaderCity(props) {
+function CascaderCity(props:any) {
     const {setParent, cRef} = props
     const [visible, setVisible] = useState(false)
     // const [df, setdf] = useState<string[]>([])
@@ -152,4 +155,4 @@ function CascaderCity(props) {
     )
 }
 
-export default index
+export default Index

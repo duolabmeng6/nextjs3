@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css'
 import {observer} from "mobx-react-lite"
-import {useStore} from '../store'
+import {UseStore} from '../store'
 import {useEffect} from 'react'
 import React, {useState} from 'react'
 import {FooterTabBar} from "../components/FooterTabBar"
@@ -15,8 +15,8 @@ export function getStaticProps() {
 }
 
 const Home = () => {
-    const {tabs} = useStore()
-    const {user} = useStore()
+    const {tabs} = UseStore()
+    const {user} = UseStore()
     //
     // useEffect(function () {
     //     user.redata()

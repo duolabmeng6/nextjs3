@@ -26,8 +26,8 @@ class UserStore {
         if (userinfo != undefined) {
             console.log("用户信息", userinfo)
             try {
+                // @ts-ignore
                 this.info = JSON.parse(userinfo)
-
             } catch (e) {
                 c('userinfo', null)
             }
@@ -90,7 +90,7 @@ class UserStore {
         return res
     }
     // 取用户收货地址 通过id
-    async getAddressById(id: number) {
+    async getAddressById(id: string | string[]) {
         console.log("取用户收货地址")
         const res = await http.get(`/api/收货地址/${id}/edit`)
         console.log("取用户收货地址", res)
