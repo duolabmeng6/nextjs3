@@ -1,18 +1,14 @@
-import styles from '../styles/Home.module.css'
 import {observer} from "mobx-react-lite"
 import {UseStore} from '../store'
 import {useEffect} from 'react'
 import React, {useState} from 'react'
 import {FooterTabBar} from "../components/FooterTabBar"
-import {Button} from "antd-mobile";
-import Router from "next/router";
 
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination, Navigation} from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import Image from 'next/image'
 
 
 export function getStaticProps() {
@@ -78,9 +74,7 @@ const Home = () => {
             <div className=" flex-grow px-4">
                 <ul className="flex justify-center items-center text-center  bg-white shadow -mt-6 px-4 py-2 shadow  shadow-md rounded-lg">
                     <li className="flex-1">
-                        <div className="mx-auto w-[40px] h-[40px] ">
-                            <Image src="/tool1.png" width={40} height={40}/>
-                        </div>
+                        <div className="mx-auto w-[40px] h-[40px] "><img src="/tool1.png" alt=""/></div>
                         <p className="text-sm">管理纪念馆</p></li>
                     <li className="flex-1">
                         <div className="mx-auto w-[40px] h-[40px] "><img src="/tool2.png" alt=""/></div>
@@ -492,7 +486,7 @@ const Home = () => {
 
 
                 {/*https://play.tailwindcss.com/BuAPyjQJ5Z*/}
-                <div className="w-[345px]">
+                <div className="w-full">
                     <div className="mt-2 flex items-center">
                         <div className="">
                             <span className="border-b-2 border-green-500 text-2xl">人物纪念馆</span>
@@ -532,7 +526,7 @@ const Home = () => {
 
 
                 {/*https://play.tailwindcss.com/R18cO2RhBu*/}
-                <div className="w-[345px]">
+                <div className="w-full">
                     <div className="mt-2 flex items-center">
                         <div className="">
                             <span className="border-b-2 border-green-500 text-2xl">今日生祭</span>
