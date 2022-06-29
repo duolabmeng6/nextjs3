@@ -139,7 +139,7 @@ const Home = () => {
                         <span className="border-b-2 border-green-500 text-2xl">管理纪念馆</span>
                     </div>
                     <div className="flex-grow"></div>
-                    <div className="flex-none text-sm text-gray-400">查看更多></div>
+                    <div className="flex-none text-sm text-gray-400">查看更多&gt;</div>
                 </div>
 
 
@@ -291,7 +291,7 @@ const Home = () => {
                         <span className="border-b-2 border-green-500 text-2xl">纪念馆排行</span>
                     </div>
                     <div className="flex-grow"></div>
-                    <div className="flex-none text-sm text-gray-400">查看更多></div>
+                    <div className="flex-none text-sm text-gray-400">查看更多&gt;</div>
                 </div>
 
                 <div className="mt-4 flex justify-center items-center">
@@ -334,7 +334,7 @@ const Home = () => {
                         <span className="border-b-2 border-green-500 text-2xl">最新纪念馆</span>
                     </div>
                     <div className="flex-grow"></div>
-                    <div className="flex-none text-sm text-gray-400">查看更多></div>
+                    <div className="flex-none text-sm text-gray-400">查看更多&gt;</div>
                 </div>
 
 
@@ -495,7 +495,7 @@ const Home = () => {
                             <span className="border-b-2 border-green-500 text-2xl">人物纪念馆</span>
                         </div>
                         <div className="flex-grow"></div>
-                        <div className="flex-none text-sm text-gray-400">查看更多></div>
+                        <div className="flex-none text-sm text-gray-400">查看更多&gt;</div>
                     </div>
 
                     <div className="mt-4 flex flex-nowrap items-center justify-between">
@@ -535,7 +535,7 @@ const Home = () => {
                             <span className="border-b-2 border-green-500 text-2xl">今日生祭</span>
                         </div>
                         <div className="flex-grow"></div>
-                        <div className="flex-none text-sm text-gray-400">查看更多></div>
+                        <div className="flex-none text-sm text-gray-400">查看更多&gt;</div>
                     </div>
 
                     <div className="mt-2 flex flex-col">
@@ -610,7 +610,7 @@ const Home = () => {
                         <span className="border-b-2 border-green-500 text-2xl">纪念馆留言</span>
                     </div>
                     <div className="flex-grow"></div>
-                    <div className="flex-none text-sm text-gray-400">查看更多></div>
+                    <div className="flex-none text-sm text-gray-400">查看更多&gt;</div>
                 </div>
                 <div className="border-b border-gray-200 py-6">
                     <div className="flex flex-row">
