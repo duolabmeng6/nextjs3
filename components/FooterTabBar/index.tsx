@@ -1,11 +1,14 @@
 import {TabBar} from "antd-mobile";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {AppOutline, MessageOutline, UnorderedListOutline, UserOutline} from "antd-mobile-icons";
 import Router from "next/router";
+import {useStore} from "../../store";
 
 
-export function FooterTabBar({activeKey="/"}) {
-    const tabs = [
+const FooterTabBar = () => {
+    const {tabs} = useStore()
+
+    const tabsItem = [
         {
             key: '/',
             title: '首页',
@@ -30,11 +33,13 @@ export function FooterTabBar({activeKey="/"}) {
 
     const setRouteActive = (value: string) => {
         Router.push(value)
+        tabs.path = value
     }
+
     return (
         <>
-            <TabBar activeKey={activeKey} onChange={value => setRouteActive(value)}>
-                {tabs.map(item => (
+            <TabBar activeKey={tabs.path} onChange={value => setRouteActive(value)}>
+                {tabsItem.map(item => (
                     <TabBar.Item key={item.key} icon={item.icon} title={item.title}/>
                 ))}
             </TabBar>
@@ -42,15 +47,4 @@ export function FooterTabBar({activeKey="/"}) {
     )
 }
 
-export async function getStaticProps() {
-    const res = await fetch('https://api.github.com/repos/vercel/next.js')
-    const json = await res.json()
-
-    return {
-        props: {
-            stars: json.stargazers_count,
-        },
-    }
-}
-
-export default Index
+export {FooterTabBar}

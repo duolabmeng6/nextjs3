@@ -1,4 +1,4 @@
-const TOKEN_KEY = 'itcast_geek_pc'
+const TOKEN_KEY = 'lltoken'
 
 const getToken = () => localStorage.getItem(TOKEN_KEY)
 const setToken = token => localStorage.setItem(TOKEN_KEY, token)

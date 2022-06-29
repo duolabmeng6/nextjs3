@@ -22,14 +22,14 @@ const Index = () => {
             await user.login(mobile, password)
             Toast.show({
                 icon: 'success',
-                content: '登录成功',
+                content: '注册成功',
             })
             await Router.push("/")
         } catch (e) {
             // @ts-ignore
             Toast.show({
                 icon: 'fail',
-                content: e.data?.message || '登录失败',
+                content: e.data?.message || '注册失败',
             })
         }
     };
@@ -45,7 +45,7 @@ const Index = () => {
     return (
         <>
             <NavBar back='返回' onBack={back}>
-                登录
+                注册
             </NavBar>
 
 
@@ -60,7 +60,7 @@ const Index = () => {
                 }}
                 footer={
                     <Button block type='submit' color='primary' size='large'>
-                        登录
+                        注册
                     </Button>
                 }
             >

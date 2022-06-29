@@ -1,7 +1,14 @@
-const TOKEN_KEY = 'lltoken'
+const c = (key, data) => {
+    if (typeof window == 'undefined') {
+        return undefined;
+    }
+    if (data === undefined) {
+        return localStorage.getItem(key)
+    }
+    if (data == null) {
+        localStorage.removeItem(key)
+    }
 
-const getToken = () => localStorage.getItem(TOKEN_KEY)
-const setToken = token => localStorage.setItem(TOKEN_KEY, token)
-const clearToken = () => localStorage.removeItem(TOKEN_KEY)
-
-export { getToken, setToken, clearToken }
+    localStorage.setItem(key, data)
+}
+export {c}

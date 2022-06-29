@@ -1,29 +1,39 @@
-import type {NextPage} from 'next'
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import { Button, DatePicker, version } from "antd";
 import {observer} from "mobx-react-lite"
 import {useStore} from '../../../store'
-import { Button, Checkbox, Form, Input ,message} from 'antd';
-import { useRouter } from 'next/router'
+import {Button, Checkbox, Form, Input, NavBar, Toast} from 'antd-mobile';
+import Router, { useRouter } from 'next/router'
+import type { ToastHandler } from 'antd-mobile/es/components/toast'
+import React, { FC, useEffect, useRef, useState } from 'react'
 
-const edit = () => {
+const index = () => {
+    const handler = useRef<ToastHandler>()
+
     const router = useRouter()
-
     const {user} = useStore()
-    function click() {
-        user.name = "bbbbbbb"
-    }
+    const form = useRef(null)
+
+    useEffect(function (){
+        user.redata()
+        console.log("用户信息",user.info)
+        form.current.setFieldsValue(user.info);
+    },[])
+
+
     const onFinish = async (values: any) => {
         console.log('Success:', values);
         console.log(values)
-        const {mobile, password} = values
         try {
-            await user.login(mobile, password)
-            await router.push("/")
+            let data = await user.edit(values)
+            // await router.push("/user/edit")
+            if (data.message =="操作成功"){
+
+                Toast.show({icon: 'success', content: '保存成功'})
+            }else{
+                Toast.show({icon: 'success', content: data.message})
+            }
         } catch (e) {
             // @ts-ignore
-            message.error(e.data?.message || '登录失败')
+            Toast.show({icon: 'fail', content: e.data?.message || '修改失败',})
         }
     };
 
@@ -31,45 +41,49 @@ const edit = () => {
         console.log('Failed:', errorInfo);
     };
 
+    function back() {
+        Router.push("/")
+    }
+
     return (
         <>
+            <NavBar back='返回' onBack={back}>
+                设置
+            </NavBar>
+            头像
+            收货地址
+            用户协议
+            隐私协议
+            关于我们
+            清理缓存
+            注销
+
             <Form
                 name="basic"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
+                layout='horizontal'
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
-                autoComplete="off"
-                initialValues={{
-                    mobile: '13800138000',
-                    password: '123456',
-                    remember: true
-                }}
+                ref={form}
             >
                 <Form.Item
-                    label="用户名"
+                    label="手机号"
                     name="mobile"
                     rules={[{ required: true, message: '请输入用户名!' }]}
-
                 >
                     <Input />
                 </Form.Item>
 
                 <Form.Item
-                    label="密码"
-                    name="password"
-                    rules={[{ required: true, message: '请输入密码!' }]}
+                    label="名称"
+                    name="name"
+                    rules={[{ required: true, message: '名称!' }]}
                 >
-                    <Input.Password />
+                    <Input />
                 </Form.Item>
 
-                <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-                    <Checkbox>记住我</Checkbox>
-                </Form.Item>
-
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                    <Button type="primary" htmlType="submit">
-                        登录
+                <Form.Item >
+                    <Button block type='submit' color='primary' size='large'>
+                        提交
                     </Button>
                 </Form.Item>
             </Form>
@@ -77,4 +91,4 @@ const edit = () => {
     )
 }
 
-export default observer(edit)
+export default observer(index)
