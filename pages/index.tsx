@@ -75,7 +75,7 @@ const Home = () => {
                 <ul className="flex justify-center items-center text-center  bg-white shadow -mt-6 px-4 py-2 shadow  shadow-md rounded-lg">
                     <li className="flex-1">
                         <div className="mx-auto w-[40px] h-[40px] "><img src="/tool1.png" alt=""/></div>
-                        <p className="text-sm">管理纪念馆</p></li>
+                        <p className="text-sm">管理纪念馆123</p></li>
                     <li className="flex-1">
                         <div className="mx-auto w-[40px] h-[40px] "><img src="/tool2.png" alt=""/></div>
 
